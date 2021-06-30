@@ -1,0 +1,56 @@
+class Main {
+
+  private No primeiro;
+  private No ultimo;
+  private String nomedafila;
+
+  public Main(String nome){
+    nomedafila = nome;
+
+    primeiro = ultimo = null;
+  }
+
+  public Main(){
+    nomedafila = "Fila teste";
+    primeiro = ultimo = null;
+  }
+
+public void Enfileira (String item){
+  if(vazia())
+  primeiro = ultimo = new No(item);
+
+  else{
+    ultimo.setProx(new No (item));
+    ultimo =  ultimo.getProx();
+  }
+}
+
+public String Desenfileira(){
+  if (vazia()){
+    return null;
+  }
+  String item = primeiro.getDado();
+
+  if (primeiro == ultimo)
+  primeiro = ultimo = null;
+
+  else 
+  primeiro = primeiro.getProx();
+  return item;
+}
+
+public boolean vazia(){
+  return primeiro == null;
+}
+
+public void exibe_primeiro(){
+  System.out.println(primeiro.getDado());
+}
+  public static void main(String[] args) {
+    Main f1 = new Main();
+    f1.Enfileira("el01");
+    f1.Enfileira("el02");
+    f1.Enfileira("el03");
+    f1.exibe_primeiro();
+  }
+}
